@@ -37,13 +37,11 @@ To open it with Alfred or Quicksilver, you have to copy `Emacs.app` into
 
 If you want to use my settings straight out of the box, here are some things to note:
 
- * The key bindings are optimized for a norwegian keyboard layout.
-
  * Start by reading up on all the cool stuff in key-bindings.el.
 
  * You quit emacs with `C-x r q`, mnemonic *Really Quit*.
 
- * Find file in project with `C-x o`, in dir with `C-x C-f`, recent with `C-x f`
+ * Find file in project with `C-x C-o`, in dir with `C-x C-f`, recent with `C-x f`
 
  * Add your user- and project-specific stuff in .emacs.d/users/[machine name]/*.el
 
@@ -84,7 +82,7 @@ overview of the most commonly used shortcuts to get you through this pain:
 
 * `C-x C-f` Open a file. Starts in the current directory
 * `C-x f  ` Open a recently visited file
-* `C-x o  ` Open a file in the current project (based on .git ++)
+* `C-x C-o  ` Open a file in the current project (based on .git ++)
 * `C-x C-s` Save this file
 * `C-x C-w` Save as ...
 * `C-x C-j` Jump to this files' current directory
