@@ -129,7 +129,7 @@
 (global-set-key (kbd "C-x M-w") 'copy-current-file-path)
 
 ;; Window switching
-(windmove-default-keybindings) ;; Shift+direction
+;; (windmove-default-keybindings) ;; Shift+direction
 (global-set-key (kbd "C-x -") 'rotate-windows)
 (global-set-key (kbd "C-x C--") 'toggle-window-split)
 (global-unset-key (kbd "C-x C-+")) ;; don't zoom like this
@@ -205,10 +205,10 @@
 (global-set-key (kbd "C-c b") 'create-scratch-buffer)
 
 ;; Move windows, even in org-mode
-(global-set-key (kbd "<s-right>") 'windmove-right)
-(global-set-key (kbd "<s-left>") 'windmove-left)
-(global-set-key (kbd "<s-up>") 'windmove-up)
-(global-set-key (kbd "<s-down>") 'windmove-down)
+;; (global-set-key (kbd "<s-right>") 'windmove-right)
+;; (global-set-key (kbd "<s-left>") 'windmove-left)
+;; (global-set-key (kbd "<s-up>") 'windmove-up)
+;; (global-set-key (kbd "<s-down>") 'windmove-down)
 
 ;; Magit
 (global-set-key (kbd "C-x m") 'magit-status)

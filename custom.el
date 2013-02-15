@@ -19,6 +19,7 @@
  '(c-basic-offset 4)
  '(js2-cleanup-whitespace t)
  '(message-log-max 1000)
+ '(initial-scratch-message "")
  '(read-quoted-char-radix 16)
  '(shell-file-name "/bin/bash")
  '(ido-use-filename-at-point nil)

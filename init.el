@@ -45,6 +45,9 @@
 ;; Are we on a mac?
 (setq is-mac (equal system-type 'darwin))
 
+;; Setup Malabar mode
+(require 'setup-malabar)
+
 ;; Setup elnode before packages to stop it from starting a server
 ;;(require 'setup-elnode)
 
@@ -67,7 +70,9 @@
    (cons 'gitconfig-mode melpa)
    (cons 'gitignore-mode melpa)
    (cons 'clojure-mode melpa)
-   (cons 'nrepl melpa)))
+   (cons 'nrepl melpa)
+   (cons 'auto-complete marmalade)
+   (cons 'flycheck melpa)))
 
 (condition-case nil
     (init--install-packages)
@@ -94,6 +99,7 @@
 (require 'setup-ffip)
 (require 'setup-html-mode)
 (require 'setup-paredit)
+(require 'setup-ropemacs)
 
 ;; Language specific setup files
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
