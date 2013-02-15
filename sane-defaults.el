@@ -1,6 +1,12 @@
 ;; Allow pasting selection outside of Emacs
 (setq x-select-enable-clipboard t)
 
+;; Show trailing whitespace
+(setq show-trailing-whitespace t)
+
+;; Do not show the cursor in non-active window
+(setq cursor-in-non-selected-windows nil)
+
 ;; Auto refresh buffers
 (global-auto-revert-mode 1)
 
@@ -69,7 +75,7 @@
 (global-subword-mode 1)
 
 ;; Don't break lines for me, please
-(setq-default truncate-lines t)
+(setq-default truncate-lines nil)
 
 ;; Keep cursor away from edges when scrolling up/down
 (require 'smooth-scrolling)

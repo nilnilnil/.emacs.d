@@ -55,7 +55,6 @@
 
 ;; When renaming/deleting js-files, check for corresponding testfile
 (define-key js2-mode-map (kbd "C-x C-r") 'js2r-rename-current-buffer-file)
-(define-key js2-mode-map (kbd "C-x C-k") 'js2r-delete-current-buffer-file)
 
 ;; Use lambda for anonymous functions
 (font-lock-add-keywords

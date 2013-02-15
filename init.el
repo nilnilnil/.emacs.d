@@ -34,7 +34,8 @@
                  (concat user-emacs-directory "backups")))))
 
 ;; Make backups of files, even when they're in version control
-(setq vc-make-backup-files t)
+(setq make-backup-files nil)
+(setq vc-make-backup-files nil)
 
 ;; Save point position between sessions
 (require 'saveplace)

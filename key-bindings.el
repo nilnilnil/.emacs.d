@@ -164,7 +164,7 @@
 (global-set-key (kbd "M-<right>") 'smart-forward)
 
 ;; Webjump let's you quickly search google, wikipedia, emacs wiki
-(global-set-key (kbd "C-x g") 'webjump)
+(global-set-key (kbd "C-x C-g") 'webjump)
 (global-set-key (kbd "C-x M-g") 'browse-url-at-point)
 
 ;; Completion at point
@@ -252,7 +252,6 @@
 ;; Buffer file functions
 (global-set-key (kbd "C-x t") 'touch-buffer-file)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
-(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;; Jump from file to containing directory
 (global-set-key (kbd "C-x C-j") 'dired-jump) (autoload 'dired-jump "dired")
@@ -273,7 +272,7 @@
 (global-set-key (kbd "M-s f") 'find-name-dired)
 
 ;; Find file in project
-(global-set-key (kbd "C-x o") 'find-file-in-project)
+(global-set-key (kbd "C-x C-o") 'find-file-in-project)
 
 ;; Find file in project, with specific patterns
 (global-unset-key (kbd "C-x C-o")) ;; which used to be delete-blank-lines (also bound to C-c C-<return>)
