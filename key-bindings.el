@@ -50,7 +50,7 @@
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
 ;; Quickly jump in document with ace-jump-mode
-(define-key global-map (kbd "C-ø") 'ace-jump-mode)
+(define-key global-map (kbd "C-;") 'ace-jump-mode)
 
 ;; Perform general cleanup.
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
@@ -99,8 +99,9 @@
 (global-set-key (kbd "M-M") 'jump-char-backward)
 
 ;; vim's ci and co commands
-(global-set-key (kbd "M-I") 'change-inner)
-(global-set-key (kbd "M-O") 'change-outer)
+(when window-system
+  (global-set-key (kbd "M-I") 'change-inner)
+  (global-set-key (kbd "M-O") 'change-outer))
 
 ;; Create new frame
 (define-key global-map (kbd "C-x C-n") 'make-frame-command)
@@ -288,6 +289,7 @@
 (global-set-key (kbd "C-x C-o ph") (ffip-create-pattern-file-finder "*.php"))
 (global-set-key (kbd "C-x C-o tx") (ffip-create-pattern-file-finder "*.txt"))
 (global-set-key (kbd "C-x C-o vm") (ffip-create-pattern-file-finder "*.vm"))
+(global-set-key (kbd "C-x C-o py") (ffip-create-pattern-file-finder "*.py"))
 
 ;; View occurrence in occur mode
 (define-key occur-mode-map (kbd "v") 'occur-mode-display-occurrence)

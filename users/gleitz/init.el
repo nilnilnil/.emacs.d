@@ -7,6 +7,10 @@
 (setq js-indent-level 2)
 (setq ruby-indent-level 2)
 
+;; Split window horizontally, not vertically
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
 ;; Font size
 (define-key global-map (kbd "M-s +") 'zoom-in)
 (define-key global-map (kbd "M-s -") 'zoom-out)
@@ -88,57 +92,3 @@
       (uncomment-region (point-at-bol) (point-at-eol)) (error nil))
   (next-line -1)
   (if (> arg 1) (ff/uncomment-and-go-up (1- arg))))
-
-;; Malabar mode
-(defun walk-path (dir action)
-  "walk DIR executing ACTION with (dir file)"
-  (cond ((file-directory-p dir)
-         (or (char-equal ?/ (aref dir(1- (length dir))))
-             (setq dir (file-name-as-directory dir)))
-         (let ((lst (directory-files dir nil nil t))
-               fullname file)
-           (while lst
-             (setq file (car lst))
-             (setq lst (cdr lst))
-             (cond ((member file '("." "..")))
-                   (t
-                    (and (funcall action dir file)
-                         (setq fullname (concat dir file))
-                         (file-directory-p fullname)
-                         (walk-path fullname action)))))))
-        (t
-         (funcall action
-                  (file-name-directory dir)
-                  (file-name-nondirectory dir)))))
-(defun walk-path-visitor (dir file)
-  "Called by walk-path for each file found"
-  ;; (message (concat dir file))
-  (if (or
-       (string-match "-sources\.jar$" file)
-       (string-match "\.jar$" file))
-      (progn
-        (add-to-list 'malabar-extra-source-locations (expand-file-name (concat dir file)))
-        t)
-    t))
-
-(walk-path "~/maven.repo/" 'walk-path-visitor)
-
-(defun malabar-refresh ()
-  (interactive)
-  (walk-path "~/maven.repo/" 'walk-path-visitor)
-  (malabar-clear-typecache))
-
-;; Autocompile on save
-(add-hook 'malabar-mode-hook
-          (lambda () (add-hook 'after-save-hook 'malabar-compile-file-silently nil t)))
-
-;; Make Malabar's autoimport behave more like Eclipse
-(defun malabar-eclipse-import ()
-  "Eclipse style import handling."
-  (interactive)
-  (malabar-import-all)
-  (malabar-import-group-imports))
-(add-hook 'malabar-mode-hook
-          (lambda () (local-set-key (kbd "C-c C-v z") 'malabar-eclipse-import)))
-
-(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))

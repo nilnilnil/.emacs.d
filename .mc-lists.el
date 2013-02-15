@@ -33,6 +33,7 @@
         js2r-inline-var
         js2r-var-to-this
         kill-and-retry-line
+        kill-region
         kill-region-or-backward-word
         magit-stage-item
         markdown-enter-key

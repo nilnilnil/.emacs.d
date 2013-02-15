@@ -46,7 +46,8 @@
 (setq is-mac (equal system-type 'darwin))
 
 ;; Setup Malabar mode
-(require 'setup-malabar)
+(when window-system
+  (require 'setup-malabar))
 
 ;; Setup elnode before packages to stop it from starting a server
 ;;(require 'setup-elnode)
@@ -161,7 +162,7 @@
 (eval-after-load 'elisp-slime-nav '(diminish 'elisp-slime-nav-mode))
 
 ;; Email, baby
-(require 'setup-mu4e)
+;; (require 'setup-mu4e)
 
 ;; Emacs server
 (require 'server)
