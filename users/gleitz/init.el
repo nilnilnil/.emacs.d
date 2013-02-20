@@ -7,10 +7,6 @@
 (setq js-indent-level 2)
 (setq ruby-indent-level 2)
 
-;; Split window horizontally, not vertically
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
-
 ;; Font size
 (define-key global-map (kbd "M-s +") 'zoom-in)
 (define-key global-map (kbd "M-s -") 'zoom-out)
@@ -30,6 +26,16 @@
 (add-hook 'python-mode-hook 'flycheck-mode)
 (add-hook 'js2-mode-hook 'flycheck-mode)
 (setq flycheck-error-display-timer nil)
+
+;; Annoying Arrows
+(require 'annoying-arrows-mode)
+(global-annoying-arrows-mode)
+
+;; Infinite pop mark
+(setq set-mark-command-repeat-pop t)
+
+;; No backups, please
+(setq auto-save-default nil)
 
 ;; Edit the buffer as super user
 (defun sudo ()
