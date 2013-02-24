@@ -4,7 +4,7 @@
 (setq ns-function-modifier 'hyper)
 
 ;; mac friendly font
-(set-face-attribute 'default nil :font "Monaco-16")
+(set-face-attribute 'default nil :font "Monaco-14")
 
 ;; make sure path is correct when launched as application
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
@@ -15,8 +15,8 @@
 
 ;; Move to trash when deleting stuff
 (setq delete-by-moving-to-trash t
-      trash-directory "~/.Trash/emacs")
-
+      trash-directory "~/.Trash/emacs"
+)
 ;; Ignore .DS_Store files with ido mode
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 
