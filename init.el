@@ -169,6 +169,10 @@
 (unless (server-running-p)
   (server-start))
 
+;; Edit with Emacs
+(require 'edit-server)
+(edit-server-start)
+
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
@@ -176,3 +180,4 @@
 ;; Conclude init by setting up specifics for the current user
 (when (file-exists-p user-settings-dir)
   (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
+(put 'ido-exit-minibuffer 'disabled nil)

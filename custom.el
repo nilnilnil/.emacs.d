@@ -19,9 +19,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-basic-offset 4)
- '(ido-case-fold t)
  '(ido-use-filename-at-point nil)
  '(initial-scratch-message "")
+ '(js2-basic-offset 4)
  '(js2-cleanup-whitespace t)
  '(js2-idle-timer-delay 0.5)
  '(message-log-max 1000)
