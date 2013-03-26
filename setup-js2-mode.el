@@ -2,7 +2,7 @@
 (setq-default js2-auto-indent-p nil)
 (setq-default js2-enter-indents-newline nil)
 (setq-default js2-global-externs '("module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
-(setq-default js2-idle-timer-delay 0.1)
+(setq-default js2-idle-timer-delay 0.5)
 (setq-default js2-indent-on-enter-key nil)
 (setq-default js2-mirror-mode nil)
 (setq-default js2-strict-inconsistent-return-warning nil)
@@ -11,6 +11,9 @@
 (setq-default js2-include-rhino-externs nil)
 (setq-default js2-include-gears-externs nil)
 (setq-default js2-concat-multiline-strings 'eol)
+(setq-default js2-basic-offset 4)
+(setq-default js2-bounce-indent-p t)
+(setq-default js2-cleanup-whitespace t)
 
 (require 'js2-refactor)
 

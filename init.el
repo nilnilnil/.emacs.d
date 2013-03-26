@@ -33,7 +33,7 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
-;; Make backups of files, even when they're in version control
+;; Don't backup files, please
 (setq make-backup-files nil)
 (setq vc-make-backup-files nil)
 
@@ -73,7 +73,8 @@
    (cons 'clojure-mode melpa)
    (cons 'nrepl melpa)
    (cons 'auto-complete marmalade)
-   (cons 'flycheck melpa)))
+   (cons 'flycheck melpa)
+   (cons 'dired-details+ melpa)))
 
 (condition-case nil
     (init--install-packages)
@@ -129,7 +130,6 @@
 (require 'jump-char)
 (require 'eproject)
 (require 'wgrep)
-(require 'smart-forward)
 (require 'change-inner)
 (require 'multifiles)
 

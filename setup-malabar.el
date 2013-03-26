@@ -5,7 +5,7 @@
 (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
 ;; Enable EDE (Project Management) features
 (global-ede-mode 1)
-(setq malabar-extra-source-locations (quote ("~/projects/java/" "~/projects/ebay/feedhome/feedhome/src/main/java/")))
+(setq malabar-extra-source-locations (quote ("~/projects/java/" "~/projects/ebay/TeamFeed/feedhome/feedhome/src/main/java/")))
 (setq malabar-groovy-lib-dir (expand-file-name "~/.emacs.d/site-lisp/malabar/lib"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/malabar/lisp"))
 (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode

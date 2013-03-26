@@ -3,7 +3,6 @@
 ;; npm install -g jshint
 
 ;; Default indentation levels
-(setq-default js2-basic-offset 2)
 (setq js-indent-level 2)
 (setq ruby-indent-level 2)
 
@@ -19,6 +18,7 @@
 (global-set-key (kbd "M-u") 'revert-buffer)
 (global-set-key (kbd "C-c d") 'desktop-change-dir)
 (global-set-key (kbd "C-x g") 'find-grep-dired)
+(global-set-key (kbd "C-x n") 'find-name-dired)
 (global-set-key (kbd "<S-down>") 'ff/comment-and-go-down)
 (global-set-key (kbd "<S-up>") 'ff/uncomment-and-go-up)
 

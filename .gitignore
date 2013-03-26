@@ -14,3 +14,4 @@ site-lisp/adventur-mode
 url/cookies
 ac-comphist.dat
 *.pyc
+bookmarks
