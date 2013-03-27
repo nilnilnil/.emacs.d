@@ -33,12 +33,11 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
   (replace-regexp-in-string "\\`[ \t\n]*" "" (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
 
 ;; Open github pages from files
-(defun do-something-region ()
+(defun browse-on-github ()
   "Show the current file on github"
   (interactive)
   (let* ((script-path (expand-file-name "~/.emacs.d/lib/python/gleitzpy/gitopener.py"))
-         (buffer-name (buffer-file-name))
-         (full-path (mapconcat 'identity `("python" ,script-path ,buffer-name) " "))
+         (full-path (mapconcat 'identity `("python" ,script-path ,(buffer-file-name)) " "))
          (result-url (trim-string (shell-command-to-string full-path))))
     (message result-url)
     (browse-url result-url)
