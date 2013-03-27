@@ -1,7 +1,5 @@
-import pdb
 import sys
 import os
-import ConfigParser
 
 def _get_os_result(command):
     return os.popen(command).readline().strip()
