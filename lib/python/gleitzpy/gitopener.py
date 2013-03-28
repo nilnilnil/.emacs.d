@@ -15,7 +15,7 @@ def get_git_root_directory(path):
 
 def get_github_address():
     url = _get_os_result('git config --get remote.origin.url')
-    url = url[url.find('@') + 1:url.rfind('.git')]
+    url = url[url.find('github'):url.rfind('.git')]
     url = url.replace(':', '/')
     return url
 
