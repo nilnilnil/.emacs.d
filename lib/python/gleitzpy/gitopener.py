@@ -1,8 +1,10 @@
-import sys
 import os
+import sys
 
-def _get_os_result(command):
+
+def get_os_result(command):
     return os.popen(command).readline().strip()
+
 
 def get_git_root_directory(path):
     if not path or len(path) == 1:
@@ -13,14 +15,17 @@ def get_git_root_directory(path):
         return dir_name
     return get_git_root_directory(dir_name)
 
+
 def get_github_address():
-    url = _get_os_result('git config --get remote.origin.url')
+    url = get_os_result('git config --get remote.origin.url')
     url = url[url.find('github'):url.rfind('.git')]
     url = url.replace(':', '/')
     return url
 
+
 def get_branch_name():
-    return _get_os_result('git rev-parse --abbrev-ref HEAD')
+    return get_os_result('git rev-parse --abbrev-ref HEAD')
+
 
 def get_github_url(filename):
     github_address = get_github_address()
@@ -39,16 +44,19 @@ def get_github_url(filename):
     return complete_url
 
 
+
 def main():
+    """ Usage: python gitopener.py (optional: /path/to/file, default: cwd)"""
     if len(sys.argv) > 1:
         filename = sys.argv[1]
     else:
         filename = os.getcwd()
-    if os.path.isdir(filename):
-        os.chdir(filename)
-    else:
-        os.chdir(os.path.dirname(filename))
+    current_dir = filename
+    if not os.path.isdir(filename):
+        current_dir = os.path.dirname(filename)
+    os.chdir(current_dir)
     print get_github_url(filename)
+
 
 if __name__ == '__main__':
     main()
