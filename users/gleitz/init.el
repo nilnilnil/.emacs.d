@@ -27,10 +27,6 @@
 (add-hook 'js2-mode-hook 'flycheck-mode)
 (setq flycheck-error-display-timer nil)
 
-;; Annoying Arrows
-(require 'annoying-arrows-mode)
-(global-annoying-arrows-mode)
-
 ;; Infinite pop mark
 (setq set-mark-command-repeat-pop t)
 

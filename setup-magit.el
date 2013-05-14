@@ -77,4 +77,18 @@
 (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
 
 
+;; Rebase until it hurts
+;; http://jrb.tumblr.com/post/49248876242/git-pull-rebase-until-it-hurts
+(defun magit-pull ()
+  (interactive)
+  (magit-run-git-async "pull" "--rebase" "-v"))
+
+(defun magit-abort-rebase-and-pull ()
+  (interactive)
+  (magit-run-git-async "rebase" "--abort" "&&" "git" "pull"))
+
+(defun magit-pull-no-rebase ()
+  (interactive)
+  (magit-run-git-async "pull"))
+
 (provide 'setup-magit)
