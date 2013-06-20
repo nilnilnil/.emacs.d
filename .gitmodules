@@ -112,3 +112,6 @@
 [submodule "site-lisp/clj-refactor"]
 	path = site-lisp/clj-refactor
 	url = https://github.com/magnars/clj-refactor.el.git
+[submodule "site-lisp/nodejs-mode"]
+	path = site-lisp/nodejs-mode
+	url = https://github.com/emacsmirror/nodejs-mode.git

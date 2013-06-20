@@ -74,6 +74,8 @@
    (cons 'nrepl melpa)
    (cons 'auto-complete marmalade)
    (cons 'flycheck melpa)
+   (cons 'less-css-mode melpa)
+   (cons 'markdown-mode melpa)
    (cons 'dired-details+ melpa)))
 
 (condition-case nil
@@ -103,6 +105,7 @@
 (require 'setup-paredit)
 (require 'setup-ropemacs)
 (require 'setup-js-beautify)
+(require 'setup-nodejs)
 
 ;; Language specific setup files
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
