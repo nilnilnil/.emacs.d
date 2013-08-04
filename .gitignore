@@ -16,3 +16,5 @@ ac-comphist.dat
 *.pyc
 bookmarks
 .ropeproject
+.rtm-auth-token
+eshell/history

@@ -27,7 +27,7 @@ def get_branch_name():
     return get_os_result('git rev-parse --abbrev-ref HEAD')
 
 
-def get_github_url(filename):
+def get_github_url(filename, start_line=False, end_line=False):
     github_address = get_github_address()
     branch_name = get_branch_name()
     git_root_directory = get_git_root_directory(filename)
@@ -41,13 +41,24 @@ def get_github_url(filename):
     complete_url = url_str.format(github_address,
                                   branch_name,
                                   relative_path)
+    if start_line and start_line != 1:
+        complete_url = '{0}#L{1}'.format(complete_url, start_line)
+        if end_line:
+            complete_url = complete_url + '-L{0}'.format(end_line)
     return complete_url
 
 
 
 def main():
     """ Usage: python gitopener.py (optional: /path/to/file, default: cwd)"""
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 3:
+        filename = sys.argv[1]
+        start_line = int(sys.argv[2])
+        end_line = int(sys.argv[3])
+    elif len(sys.argv) > 2:
+        filename = sys.argv[1]
+        start = sys.argv[2]
+    elif (sys.argv) > 1:
         filename = sys.argv[1]
     else:
         filename = os.getcwd()
@@ -55,7 +66,7 @@ def main():
     if not os.path.isdir(filename):
         current_dir = os.path.dirname(filename)
     os.chdir(current_dir)
-    print get_github_url(filename)
+    print get_github_url(filename, start_line, end_line)
 
 
 if __name__ == '__main__':

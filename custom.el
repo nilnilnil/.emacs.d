@@ -19,8 +19,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-basic-offset 4)
+ '(ensime-sbt-compile-on-save nil)
+ '(flycheck-jshintrc "~/.jshintrc")
  '(ido-use-filename-at-point nil)
  '(initial-scratch-message "")
+ '(js2-bounce-indent-p nil)
  '(message-log-max 1000)
  '(nxml-child-indent 4)
  '(read-quoted-char-radix 16)

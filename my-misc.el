@@ -36,12 +36,17 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
 (defun browse-on-github ()
   "Show the current file on github"
   (interactive)
-  (let* ((script-path (expand-file-name "~/.emacs.d/lib/python/gleitzpy/gitopener.py"))
-         (full-path (mapconcat 'identity `("python" ,script-path ,(buffer-file-name)) " "))
-         (result-url (trim-string (shell-command-to-string full-path))))
-    (message result-url)
-    (browse-url result-url)
-    ))
+  (browse-url
+   (trim-string
+    (shell-command-to-string
+     (format "python %s %s %d %d"
+             (expand-file-name "~/.emacs.d/lib/python/gleitzpy/gitopener.py")
+             (buffer-file-name)
+             (if mark-active (line-number-at-pos (region-beginning))
+               (string-to-number (replace-regexp-in-string "Line " "" (what-line))))
+             (if mark-active (line-number-at-pos (region-end))
+               0)
+)))))
 
 ;; I know that string is in my buffer somewhere
 (defun my-multi-occur-in-matching-buffers (regexp &optional allbufs)

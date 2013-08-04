@@ -51,6 +51,11 @@
   (interactive)
   (kmacro-exec-ring-item (quote ("\274console.log" 0 "%d")) 100))
 
+;; Remove debugger; statements from the current buffer
+(defun debugger-remove ()
+  (interactive)
+  (kmacro-exec-ring-item (quote ("\274debugger;" 0 "%d")) 100))
+
 ;; Remove alert() statements from the current buffer
 (defun alert-remove ()
   (interactive)

@@ -74,6 +74,7 @@
    (cons 'nrepl melpa)
    (cons 'auto-complete marmalade)
    (cons 'flycheck melpa)
+   (cons 'scala-mode2 melpa)
    (cons 'less-css-mode melpa)
    (cons 'markdown-mode melpa)
    (cons 'dired-details+ melpa)))
@@ -106,6 +107,7 @@
 (require 'setup-ropemacs)
 (require 'setup-js-beautify)
 (require 'setup-nodejs)
+(require 'setup-scala)
 
 ;; Language specific setup files
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
@@ -116,6 +118,12 @@
 ;; Load slime-js when asked for
 (autoload 'slime-js-jack-in-browser "setup-slime-js" nil t)
 (autoload 'slime-js-jack-in-node "setup-slime-js" nil t)
+
+;; Load SimpleRTM
+(autoload 'simple-rtm-mode "simple-rtm" "Interactive mode for Remember The Milk" t)
+(defun simple-rtm-open-inbox ()
+  (interactive)
+  (kmacro-exec-ring-item (quote ([19 73 110 98 111 120 13 tab] 0 "%d")) 1))
 
 ;; Map files to modes
 (require 'mode-mappings)
