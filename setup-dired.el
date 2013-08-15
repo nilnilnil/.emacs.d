@@ -7,8 +7,12 @@
 (setq-default dired-details-hidden-string "--- ")
 (dired-details-install)
 
+;; Move files between split panes
+(setq dired-dwim-target t)
+
 ;; Reload dired after making changes
 (--each '(dired-do-rename
+          dired-do-copy
           dired-create-directory
           wdired-abort-changes)
         (eval `(defadvice ,it (after revert-buffer activate)
@@ -20,6 +24,7 @@
   (backward-char (- (current-column) 2)))
 
 (define-key dired-mode-map (kbd "C-a") 'dired-back-to-start-of-files)
+(define-key dired-mode-map (kbd "k") 'dired-do-delete)
 
 ;; M-up is nicer in dired if it moves to the fourth line - the first file
 (defun dired-back-to-top ()

@@ -9,6 +9,9 @@
 ;; CSS
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
+;; Restclient
+(add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
+
 ;; Cucumber
 (autoload 'feature-mode "feature-mode")
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
@@ -27,10 +30,6 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.tag$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.vm$" . html-mode))
-(add-hook 'sgml-mode-hook
-          (lambda ()
-            (require 'rename-sgml-tag)
-            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
 
 ;; JSP
 (autoload 'crappy-jsp-mode "crappy-jsp-mode")
@@ -67,6 +66,7 @@
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.jshintrc$" . javascript-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 
 ;; Configuration files

@@ -1,7 +1,5 @@
 (require 'find-file-in-project)
-
-;; Use eproject to find project root
-(setq ffip-project-root-function 'eproject-root)
+(require 's)
 
 ;; No need to be stingy
 (setq ffip-limit 4096)
@@ -43,6 +41,7 @@ Example:
        '("node_modules"
          "target"
          "overlays"
-         "vendor")))
+         "vendor"
+         ".git")))
 
 (provide 'setup-ffip)

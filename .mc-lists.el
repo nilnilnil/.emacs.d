@@ -4,6 +4,12 @@
 (setq mc/cmds-to-run-for-all
       '(
         ac-complete
+        adv-dash
+        adv-dot
+        adv-enter
+        adv-gt
+        adv-open-curly
+        adv-tab
         back-to-indentation-or-beginning
         backward-sexp
         c-electric-backspace
@@ -11,6 +17,7 @@
         c-electric-paren
         c-electric-semi&comma
         c-electric-slash
+        c-electric-star
         change-inner
         change-number-at-point
         change-outer
@@ -21,6 +28,7 @@
         duplicate-current-line-or-region
         end-of-buffer
         eval-and-replace
+        eval-last-sexp
         fold-this
         forward-paragraph
         forward-sentence
@@ -31,10 +39,13 @@
         js2-end-of-line
         js2-insert-and-indent
         js2r-inline-var
+        js2r-move-line-up
+        js2r-split-string
         js2r-var-to-this
         kill-and-retry-line
         kill-region
         kill-region-or-backward-word
+        kill-sexp
         magit-stage-item
         markdown-enter-key
         move-line-down
@@ -54,12 +65,18 @@
         org-return-indent
         org-self-insert-command
         org-shiftright
+        org-yank
         orgtbl-self-insert-command
         paredit-backslash
         paredit-backward
+        paredit-backward-up
+        paredit-close-round
         paredit-close-square
+        paredit-comment-dwim
         paredit-doublequote
+        paredit-forward
         paredit-forward-delete
+        paredit-forward-down
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-forward-up
@@ -71,10 +88,12 @@
         paredit-open-round
         paredit-open-square
         paredit-raise-sexp
+        paredit-reindent-defun
         paredit-semicolon
         paredit-splice-sexp
         paredit-split-sexp
         paredit-wrap-round
+        paredit-wrap-round-from-behind
         paredit-wrap-square
         quoted-insert
         save-region-or-current-line
@@ -82,9 +101,28 @@
         sgml-slash
         skeleton-pair-insert-maybe
         slime-space
+        sp--self-insert-command
+        sp-remove-active-pair-overlay
         sp-self-insert-command
+        subtract-number-at-point
+        tagedit-forward-slurp-tag
+        tagedit-insert-dot
+        tagedit-insert-equal
+        tagedit-insert-exclamation-mark
+        tagedit-insert-gt
+        tagedit-insert-hash
+        tagedit-insert-lt
+        tagedit-insert-quote
+        tagedit-kill
         tagedit-kill-attribute
+        tagedit-maybe-insert-slash
+        tagedit-raise-tag
+        tagedit-splice-tag
+        tern-ac-dot-complete
+        toggle-assert-refute
+        toggle-quotes
         touch-buffer-file
+        transpose-params
         transpose-sexps
         wrap-region-trigger
         yank-indented
@@ -94,16 +132,24 @@
 
 (setq mc/cmds-to-run-once
       '(
+        adv-insert-new-number
+        cleanup-buffer
+        describe-key
         dired-toggle-read-only
+        edebug-next-mode
         eval-expression
         goto-line-with-feedback
         handle-switch-frame
         ido-switch-buffer
         js2r-extract-var
         js2r-rename-var
+        jump-between-source-and-test-files
         magit-status
         mc/add-cursor-on-click
         mc/add-cursors-to-all-matches
+        multiple-cursors-mode
+        persp-switch
+        shell
         smex
         wgrep-change-to-wgrep-mode
         wgrep-finish-edit
