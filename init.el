@@ -113,6 +113,9 @@
 (setq guide-key/recursive-key-sequence-flag t)
 (setq guide-key/popup-window-position 'bottom)
 
+;; Arduino
+(require 'arduino-mode)
+
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
 (eval-after-load 'org '(require 'setup-org))

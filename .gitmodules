@@ -122,5 +122,5 @@
         path = site-lisp/datomic-snippets
         url = https://github.com/magnars/datomic-snippets.git
 [submodule "site-lisp/arduino-mode"]
-        path = site-lisp/arduino-mode
-        url = https://github.com/bookest/arduino-mode.git
+	path = site-lisp/arduino-mode
+	url = https://github.com/bookest/arduino-mode.git

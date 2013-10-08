@@ -1,3 +1,8 @@
+;; C-c d (documentation)
+;; C-c g (jump to definition)
+;; C-c f (find occurances)
+;; M-/ (code assist)
+
 (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH") ":" (expand-file-name "~/.emacs.d/lib/python")))
 
 (defun prefix-list-elements (list prefix)

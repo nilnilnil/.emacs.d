@@ -21,7 +21,7 @@
     (shell-command-on-region (point)
                              (mark)
                              (concat js-beautify-executable
-                                     " --stdin "
+                                     " -f - "
                                      js-beautify-args)
                              nil t)
     (goto-char orig-point)))
