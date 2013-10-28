@@ -52,9 +52,6 @@
 (when window-system
   (require 'setup-malabar))
 
-;; Setup elnode before packages to stop it from starting a server
-;;(require 'setup-elnode)
-
 ;; Setup packages
 (require 'setup-package)
 
@@ -63,6 +60,7 @@
   (packages-install
    '(auto-complete
      clojure-mode
+     css-eldoc
      dired-details+
      elisp-slime-nav
      exec-path-from-shell
@@ -72,10 +70,10 @@
      gist
      git-commit-mode
      gitconfig-mode
-     gitignore-mode
      guide-key
      highlight-escape-sequences
      htmlize
+     ido-at-point
      ido-vertical-mode
      less-css-mode
      magit
@@ -84,12 +82,16 @@
      nodejs-repl
      nrepl
      paredit
+     php-mode
      restclient
      scala-mode2
      simple-httpd
      slime-js
      smartparens
-     visual-regexp)))
+     visual-regexp
+     visual-regexp-steroids
+     whitespace-cleanup-mode
+     yasnippet)))
 
 (condition-case nil
     (init--install-packages)
@@ -109,12 +111,11 @@
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8"))
 (guide-key-mode 1)
-(setq guide-key/highlight-command-regexp "bookmark")
 (setq guide-key/recursive-key-sequence-flag t)
 (setq guide-key/popup-window-position 'bottom)
 
 ;; Arduino
-(require 'arduino-mode)
+;;(require 'arduino-mode)
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
@@ -140,6 +141,7 @@
 (--each '(css-mode-hook
           restclient-mode-hook
           js-mode-hook
+          ruby-mode
           markdown-mode)
   (add-hook it 'turn-on-smartparens-mode))
 
@@ -171,8 +173,7 @@
 
 ;; Visual regexp
 (require 'visual-regexp)
-(define-key global-map (kbd "M-&") 'vr/query-replace)
-(define-key global-map (kbd "M-\\") 'vr/replace)
+(require 'visual-regexp-steroids)
 
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
@@ -212,9 +213,6 @@
 ;; Elisp go-to-definition with M-. and back again with M-,
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav")
 (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t) (eldoc-mode 1)))
-
-;; Email, baby
-;; (require 'setup-mu4e)
 
 ;; Emacs server
 (require 'server)

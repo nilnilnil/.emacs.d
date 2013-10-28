@@ -12,8 +12,6 @@
 
 ;; Keyboard modifications
 (global-set-key (kbd "M-4") 'ispell-word)
-(global-set-key (kbd "M-r") 'replace-string)
-(global-set-key (kbd "M-R") 'replace-regexp)
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "M-u") 'revert-buffer)
 (global-set-key (kbd "C-c d") 'desktop-change-dir)
@@ -129,3 +127,10 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")) )
     ))
+
+;; Find init file
+(defun find-user-init-file ()
+  "Edit the `user-init-file', in another window."
+  (interactive)
+  (find-file-other-window user-init-file))
+(global-set-key (kbd "C-c I") 'find-user-init-file)

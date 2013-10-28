@@ -11,6 +11,7 @@ site-lisp/adventur-mode
 *.elc
 .DS_Store
 .yas-compiled-snippets.el
+<<<<<<< HEAD
 url/cookies
 ac-comphist.dat
 *.pyc
@@ -18,3 +19,5 @@ bookmarks
 .ropeproject
 .rtm-auth-token
 eshell/history
+.cask
+var/

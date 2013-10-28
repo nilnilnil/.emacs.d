@@ -26,16 +26,13 @@
                               "http://www.urbandictionary.com/define.php?term="
                               ""])))
 
-;; Various superfluous white-space. Just say no.
-(add-hook 'before-save-hook 'whitespace-cleanup)
+;; Fix whitespace on save, but only if the file was clean
+(global-whitespace-cleanup-mode)
+
+;; Use normal tabs in makefiles
 (add-hook 'makefile-mode-hook 'indent-tabs-mode)
 
-;; Newline after inserting closing tag in html-mode
-(defadvice sgml-close-tag (after close-tag-then-newline activate)
-  (newline-and-indent))
-
 ;; Trademark on C-x 8 t m
-
 (global-set-key (kbd "C-x 8 t m") (λ (insert "™")))
 
 ;; Add JSP expansions to html-mode
@@ -43,6 +40,26 @@
 
 ;; A bit of misc cargo culting in misc.el
 (setq xterm-mouse-mode t)
+
+;; Uniquify lines
+(defun uniq-lines (beg end)
+  "Unique lines in region.
+Called from a program, there are two arguments:
+BEG and END (region to sort)."
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (not (eobp))
+        (kill-line 1)
+        (yank)
+        (let ((next-line (point)))
+          (while
+              (re-search-forward
+               (format "^%s" (regexp-quote (car kill-ring))) nil t)
+            (replace-match "" nil nil))
+          (goto-char next-line))))))
 
 (defun trim-string (string)
   "Remove white spaces in beginning and ending of STRING.
