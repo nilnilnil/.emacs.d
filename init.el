@@ -75,6 +75,7 @@
      htmlize
      ido-at-point
      ido-vertical-mode
+     js2-mode
      less-css-mode
      magit
      markdown-mode

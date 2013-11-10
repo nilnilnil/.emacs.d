@@ -68,6 +68,7 @@
      (add-to-list 'grep-find-ignored-directories "target")
      (add-to-list 'grep-find-ignored-directories "node_modules")
      (add-to-list 'grep-find-ignored-directories "vendor")
+     (add-to-list 'grep-find-ignored-directories ".git")
 
      ;; Add custom keybindings
      (define-key grep-mode-map "q" 'rgrep-quit-window)
