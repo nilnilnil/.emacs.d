@@ -1,5 +1,4 @@
 ;; Malabar mode
-(load-file (expand-file-name "~/.emacs.d/site-lisp/cedet/common/cedet.el"))
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode t)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode t)
 (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
@@ -10,10 +9,9 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/malabar/lisp"))
 (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
                                   global-semanticdb-minor-mode
-                                  global-semantic-idle-summary-mode
                                   global-semantic-mru-bookmark-mode))
 (require 'cedet)
-(semantic-load-enable-minimum-features) ;; or enable more if you wish
+(semantic-mode 1)
 (require 'malabar-mode)
 
 (defun walk-path (dir action)

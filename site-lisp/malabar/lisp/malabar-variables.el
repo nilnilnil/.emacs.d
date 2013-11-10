@@ -60,6 +60,8 @@
       (define-key prefix-map [?\C-y] 'malabar-jump-to-thing)
       (define-key prefix-map [?\C-r] malabar-refactor-map)
       (define-key map malabar-mode-key-prefix prefix-map))
+    (define-key map "\M-n" 'next-error)
+    (define-key map "\M-p" 'previous-error)
     (define-key map ":" 'malabar-electric-colon)
     map)
   "Keymap for Malabar mode.")
@@ -134,5 +136,10 @@ operator ('?:').
 See `malabar-electric-colon'."
   :group 'malabar-mode
   :type '(boolean))
+
+(defcustom malabar-mode-fallback 'java-mode
+  "Fallback mode for `malabar-mode-maybe'."
+  :group 'malabar-mode
+  :type 'function)
 
 (provide 'malabar-variables)

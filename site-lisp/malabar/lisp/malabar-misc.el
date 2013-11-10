@@ -73,6 +73,8 @@
           (semantic-tag-type-members class-tag))))
 
 (defun malabar-semantic-fetch-tags ()
+  (unless (semantic-active-p)
+    (semantic-new-buffer-fcn))
   (let ((tags (semantic-fetch-tags)))
     (mapc (lambda (tag)
             (when (semantic-tag-of-class-p tag 'type)
@@ -93,5 +95,16 @@
                          (semantic-tag-type-superclasses tag))))))
           tags)
     tags))
+
+(defun wisent-malabar-java-setup ()
+  ;; HACK: Since we're not loading the old java parser the installer
+  ;; function isn't defined; give it a dummy definition
+  (flet ((wisent-java-wy--install-parser () nil)
+         (wisent-java-tags-wy--install-parser () nil)) ;; For Emacs 23.2+
+    (wisent-java-default-setup))
+  (setq semantic-lex-depth 10)
+  (setq semantic-idle-scheduler-idle-time 1)
+  (setq semantic-lex-analyzer 'wisent-malabar-java-lexer)
+  (wisent-malabar-java-wy--install-parser))
 
 (provide 'malabar-misc)

@@ -157,7 +157,7 @@ variable once the eval server has started."
 (defun malabar-groovy-stop ()
   "Stop the inferior Groovy."
   (interactive)
-  (let ((start-time (float-time)) (groovy-process (get-buffer-process malabar-groovy-buffer-name)))  
+  (let ((start-time (float-time)) (groovy-process (get-buffer-process malabar-groovy-buffer-name)))
     (malabar-groovy-eval-in-process groovy-process "exit")
     (while (malabar-groovy-live-p)
       (sit-for 0.1)
@@ -202,10 +202,10 @@ pop to the Groovy console buffer."
         (progress-reporter-force-update reporter 4 "Starting Groovy...connecting to servers ")
         (make-comint malabar-groovy-compile-server-comint-name
                      (cons "localhost"
-                           (number-to-string malabar-groovy-compile-server-port)))
+                           malabar-groovy-compile-server-port))
         (make-comint malabar-groovy-eval-server-comint-name
                      (cons "localhost"
-                           (number-to-string malabar-groovy-eval-server-port)))
+                           malabar-groovy-eval-server-port))
         (progress-reporter-force-update reporter 5 "Starting Groovy...waiting for server prompts ")
         (malabar-groovy--wait-for-prompt malabar-groovy-compile-server-buffer-name
                                          initial-points-alist)
@@ -290,7 +290,7 @@ for it to come up."
 (defconst malabar-groovy--eval-log-output-marker-re
   (concat "^" (regexp-opt (mapcar (lambda (level)
                                     (concat "[" (symbol-name level) "]"))
-                                  '(DEBUG INFO WARN ERROR FATAL)))))
+                                  '(DEBUG INFO WARN WARNING ERROR FATAL)))))
 
 (defun malabar-groovy--eval-fix-output (cell)
   (let* ((string (car cell))
@@ -364,6 +364,8 @@ for it to come up."
 (defvar malabar-compilation-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "g" 'malabar-groovy-rerun-last-compilation)
+    (define-key map "n" 'next-error)
+    (define-key map "p" 'previous-error)
     map))
 
 (define-minor-mode malabar-compilation-minor-mode
@@ -429,6 +431,7 @@ for it to come up."
                                                      (point)))
                    :position-info
                    (let ((positions (match-string-no-properties 7)))
+		     (message "#%s" positions)
                      (mapcar #'1+
                              (car
                               (read-from-string
@@ -437,6 +440,10 @@ for it to come up."
                                        ")"))))))
              malabar-groovy--compiler-notes
              :test #'equal)))
+
+;; CLASS::FILE::LINE::COLUMN::START::END::POS::Message
+(add-to-list 'compilation-error-regexp-alist '("ERROR::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)" 1 2))
+(add-to-list 'compilation-error-regexp-alist '("WARNING::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)::\\(.+?\\)" 1 2 nil 1))
 
 (defvar malabar-groovy--compilation-backlog nil)
 
@@ -517,13 +524,14 @@ for it to come up."
                                            (warning 'malabar-warning-face)
                                            (info 'malabar-info-face)))
               (overlay-put overlay 'help-echo (getf compiler-note :message)))
-            (push (fringe-helper-insert-region
-                   beg end (fringe-lib-load (case class
-                                              (error fringe-lib-exclamation-mark)
-                                              (warning fringe-lib-question-mark)
-                                              (info fringe-lib-wave)))
-                   'left-fringe (when (eq class 'error) 'font-lock-warning-face))
-                  malabar-groovy--fringe-overlays)
+	    (when (display-graphic-p)
+	      (push (fringe-helper-insert-region
+		     beg end (fringe-lib-load (case class
+						(error fringe-lib-exclamation-mark)
+						(warning fringe-lib-question-mark)
+						(info fringe-lib-wave)))
+		     'left-fringe (when (eq class 'error) 'font-lock-warning-face))
+		    malabar-groovy--fringe-overlays))
             (set-buffer-modified-p modified)))))))
 
 (provide 'malabar-groovy)
