@@ -124,3 +124,21 @@
 [submodule "site-lisp/yasnippet-snippets"]
 	path = site-lisp/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "site-lisp/coffee-mode"]
+	path = site-lisp/coffee-mode
+	url = https://github.com/defunkt/coffee-mode
+[submodule "site-lisp/mark-multiple"]
+    path = site-lisp/mark-multiple
+	url = https://github.com/magnars/mark-multiple.el.git
+[submodule "site-lisp/maxframe.el"]
+	path = site-lisp/maxframe.el
+	url = https://github.com/rmm5t/maxframe.el.git
+[submodule "site-lisp/ruby-end"]
+    path = site-lisp/ruby-end
+	url = https://github.com/rejeep/ruby-end.git
+[submodule "site-lisp/yasnippet"]
+    path = site-lisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "site-lisp/zencoding"]
+    path = site-lisp/zencoding
+	url = https://github.com/rooney/zencoding.git
