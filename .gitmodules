@@ -124,6 +124,7 @@
 [submodule "site-lisp/yasnippet-snippets"]
 	path = site-lisp/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+    ignore = all
 [submodule "site-lisp/coffee-mode"]
 	path = site-lisp/coffee-mode
 	url = https://github.com/defunkt/coffee-mode
