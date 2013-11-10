@@ -1,5 +1,5 @@
 (setq user-scala-dir
-      (concat user-emacs-directory "lib/scala/ensime/elisp/"))
+      (concat user-emacs-directory "lib/scala/ensime/src/main/elisp/"))
 (add-to-list 'load-path user-scala-dir)
 
 (require 'ensime)

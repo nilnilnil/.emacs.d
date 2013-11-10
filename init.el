@@ -59,6 +59,8 @@
 (defun init--install-packages ()
   (packages-install
    '(auto-complete
+     cider
+     cider-tracing
      clojure-mode
      css-eldoc
      dired-details+
@@ -70,6 +72,7 @@
      gist
      git-commit-mode
      gitconfig-mode
+     gitignore-mode
      guide-key
      highlight-escape-sequences
      htmlize
@@ -110,13 +113,13 @@
 
 ;; guide-key
 (require 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8" "C-x +"))
 (guide-key-mode 1)
 (setq guide-key/recursive-key-sequence-flag t)
 (setq guide-key/popup-window-position 'bottom)
 
 ;; Arduino
-;;(require 'arduino-mode)
+(require 'arduino-mode)
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
@@ -135,6 +138,9 @@
 (require 'setup-js-beautify)
 (require 'setup-nodejs)
 (require 'setup-scala)
+
+;; Font lock dash.el
+(eval-after-load "dash" '(dash-enable-font-lock))
 
 ;; Default setup of smartparens
 (require 'smartparens-config)
@@ -233,3 +239,21 @@
 (when (file-exists-p user-settings-dir)
   (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
 (put 'ido-exit-minibuffer 'disabled nil)
+
+;; Recompile files on exit
+(setq config-dir (file-name-directory (or (buffer-file-name) load-file-name)))
+(defun byte-compile-dotfiles ()
+  "Byte compile all Emacs dotfiles."
+  (interactive)
+  ;; Automatically recompile the entire .emacs.d directory.
+  (byte-recompile-directory (expand-file-name config-dir) 0))
+(defun byte-compile-user-init-file ()
+  (let ((byte-compile-warnings '(unresolved)))
+    ;; in case compilation fails, don't leave the old .elc around:
+    (when (file-exists-p (concat user-init-file ".elc"))
+      (delete-file (concat user-init-file ".elc")))
+    (byte-compile-file user-init-file)
+    (byte-compile-dotfiles)
+    ;; (message "%s compiled" user-init-file)
+    ))
+(add-hook 'kill-emacs-hook 'byte-compile-user-init-file t t)
