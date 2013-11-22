@@ -8,4 +8,3 @@ sudo apt-get -y autoremove
 rm -rf ~/.emacs.d
 git clone --recursive https://github.com/nilnilnil/.emacs.d.git
 
-emacs --debug-init
