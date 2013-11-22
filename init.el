@@ -84,13 +84,13 @@
      markdown-mode
      move-text
      nodejs-repl
-     nrepl
+;     nrepl
      paredit
      php-mode
      restclient
      scala-mode2
      simple-httpd
-     slime-js
+;     slime-js
      smartparens
      visual-regexp
      visual-regexp-steroids
